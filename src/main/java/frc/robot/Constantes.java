@@ -49,7 +49,7 @@ public final class Constantes {
 
     public static final double kPDriveVel = 0.67234;
 
-
+    //Distancia entre llantas derechas e izquierdas 
     public static final double kTrackwidthMeters = Units.inchesToMeters(28);
     public static final DifferentialDriveKinematics kDriveKinematics =
         new DifferentialDriveKinematics(kTrackwidthMeters);

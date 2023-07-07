@@ -4,9 +4,12 @@
 
 package frc.robot;
 
+import com.pathplanner.lib.PathPlannerTrajectory.PathPlannerState;
+
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
+import frc.robot.subsystems.ChasisSubsistema;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -62,6 +65,10 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.schedule();
     }
+    
+    PathPlannerState exampleState = (PathPlannerState) RobotContainer.examplePath.sample(1.2);
+    System.out.println(exampleState.velocityMetersPerSecond);
+  
   }
 
   /** This function is called periodically during autonomous. */
@@ -77,6 +84,10 @@ public class Robot extends TimedRobot {
     if (m_autonomousCommand != null) {
       m_autonomousCommand.cancel();
     }
+    ChasisSubsistema.resetEncoders();
+    ChasisSubsistema.resetGyro();
+    ChasisSubsistema.resetOdometry();   
+    
   }
 
   /** This function is called periodically during operator control. */
